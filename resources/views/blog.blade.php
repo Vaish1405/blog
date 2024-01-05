@@ -12,8 +12,8 @@
     <ul>
         @foreach ($posts as $post)
             <li>
-                <h2>{{ $post['title'] }}</h2>
-                <p>{{ $post['summary'] }}</p>
+                <h2>Title: {{ $post['title'] }}</h2>
+                <p>Summary: {{ $post['summary'] }}</p>
                 <img src="{{ $post['imageUrl'] }}" alt="Post Image">
                 <p>Author: {{ $post['author'] }}</p>
                 <p>Creation Date: {{ $post['creationDate'] }}</p>
