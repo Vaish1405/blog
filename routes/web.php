@@ -14,4 +14,9 @@ use App\Http\Controllers\BlogPost;
 |
 */
 
-Route::get('/', [BlogPost::class, 'print']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/posts', [BlogPost::class, 'print']);
+Route::get('/api/posts', [BlogPost::class, 'printJson']);
