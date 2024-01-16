@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogPost;
-use App\Http\Controllers\formInput; 
+use App\Http\Controllers\FormInput; 
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', [BlogPost::class, 'print']);
-Route::get('/api/posts', [BlogPost::class, 'printJson']);
+Route::get('/posts', [BlogPost::class, 'print']); // prints the form in HTML form 
+// Route::get('/api/posts', [BlogPost::class, 'printJson']);
+
+// get info from the user 
 Route::get('/form', function() {
     return view('form');
 });
-Route::post('/process-form', [formInput::class, 'processForm']);
+
+// return the JSON version of the info
+Route::post('/processForm', [FormInput::class, 'processForm'])->name('processForm');
