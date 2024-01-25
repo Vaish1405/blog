@@ -9,8 +9,8 @@
     <form action="{{ route('processForm') }}" method="POST">
         @csrf
 
-        <label for="id">Id:</label>
-        <input type="text" id="id" name="id" value="{{ old('id') }}">
+        <label for="bookid">Id:</label>
+        <input type="text" id="bookid" name="bookid" value="{{ old('bookid') }}">
         @error('id')
             <div style="color: red;">{{ $message }}</div>
         @enderror

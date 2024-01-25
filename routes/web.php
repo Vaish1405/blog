@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogPost;
 use App\Http\Controllers\FormInput; 
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
