@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogPost;
 use App\Http\Controllers\FormInput; 
+use App\Http\Controllers\Blogs; 
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -30,3 +31,6 @@ Route::get('/form', function() {
 
 // return the JSON version of the info
 Route::post('/processForm', [FormInput::class, 'processForm'])->name('processForm');
+
+// for the main site of the blog website
+Route::get('/blogs-home', [Blogs::class, 'showPosts']);
