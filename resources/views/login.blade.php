@@ -67,32 +67,49 @@
             font-size: 1em;
             margin-bottom: 5px;
         }
+        a{
+            color: white;
+        }
     </style>
 </head>
 <body>
-
-<header>
-    <img src="company_logo.png" alt="Company Logo" id="logo">
-    <div id="userAndSearch">
-        <form action="#" method="get">
-            <input type="text" name="search" placeholder="Search...">
-        </form>
-        <a href="{{ url('/login') }}">
-            <div id="user">Login</div>
-        </a>
-    </div>
-</header>
-
-<main>
-    @foreach ($blogs as $blog)
-        <div class="blog-box">
-            <h2>{{ $blog->heading }}</h2>
-            <p>{{ $blog->description }}</p>
-            <p>{{ $blog->creationDate }}</p>
-            <p>{{ $blog->author_id }}</p>
+    <header>
+        <img src="company_logo.png" alt="Company Logo" id="logo">
+        <div id="userAndSearch">
+            <form action="#" method="get">
+                <input type="text" name="search" placeholder="Search...">
+            </form>
+            @auth 
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            @else
+                <a href="{{ url('login') }}">
+                    <div id="user">Login</div>
+                </a>
+                <a href="{{ url('register') }}">
+                    <div id="user">Register</div>
+                </a>
+            @endauth 
         </div>
-    @endforeach
-</main>
+    </header>
+    <main>
+        <form method="POST" action="{{ route('login.post') }}">
+            @csrf
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                </div>
+
+                <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </main>
 
 </body>
 </html>

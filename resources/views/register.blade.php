@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Blog Title</title>
+    <title>Register Screen</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,6 +67,9 @@
             font-size: 1em;
             margin-bottom: 5px;
         }
+        a{
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -77,21 +80,41 @@
         <form action="#" method="get">
             <input type="text" name="search" placeholder="Search...">
         </form>
-        <a href="{{ url('/login') }}">
+        <a href="{{ url('login') }}">
             <div id="user">Login</div>
+        </a>
+        <a href="{{ url('register') }}">
+            <div id="user">Register</div>
         </a>
     </div>
 </header>
 
 <main>
-    @foreach ($blogs as $blog)
-        <div class="blog-box">
-            <h2>{{ $blog->heading }}</h2>
-            <p>{{ $blog->description }}</p>
-            <p>{{ $blog->creationDate }}</p>
-            <p>{{ $blog->author_id }}</p>
+    <form method="POST" action="{{ route('register.post') }}">
+        @csrf
+
+        <div class="mb-4">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
         </div>
-    @endforeach
+
+        <div class="mb-4">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email">
+        </div>
+
+        <div class="mb-4">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword">
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
 </main>
 
 </body>
