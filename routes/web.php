@@ -44,8 +44,10 @@ Route::post('/login', [loginRegister::class, 'loginPost'])->name('login.post');
 Route::get('/register', [loginRegister::class, 'register'])->name('register');
 Route::post('/register', [loginRegister::class, 'registerPost'])->name('register.post');
 
-Route::get('/user-page', function(){
-    return view('user-page');
-})->name('user-page');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user-page', function(){
+        return view('user-page');
+    })->name('user-page');
+});
 
 Route::post('/logout', [loginRegister::class, 'logout'])->name('logout');
